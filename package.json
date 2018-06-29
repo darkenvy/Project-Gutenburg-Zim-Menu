@@ -124,7 +124,6 @@
     "include": []
   },
   "dependencies": {
-    "babel-core": "^7.0.0-beta.3",
     "preact": "^8.2.7",
     "preact-compat": "^3.18.0"
   },
@@ -135,8 +134,6 @@
     "@babel/preset-typescript": "^7.0.0-beta.51",
     "add-asset-html-webpack-plugin": "^2.1.2",
     "babel-loader": "^8.0.0-beta.4",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
     "circular-dependency-plugin": "^4.4.0",
     "compression": "^1.7.1",
     "cross-env": "^5.1.3",
