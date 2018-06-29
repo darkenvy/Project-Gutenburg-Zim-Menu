@@ -72,7 +72,7 @@ function dependencyHandlers() {
 
 module.exports = require('./base')({
   entry: [ // Add hot reloading in development
-    'eventsource-polyfill', // Necessary for hot reloading with IE
+    // 'eventsource-polyfill', // Necessary for hot reloading with IE; install using npm
     'webpack-hot-middleware/client?reload=true',
     path.join(process.cwd(), 'app/index.js'), // Start with app/index.js
   ],
