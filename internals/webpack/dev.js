@@ -33,14 +33,14 @@ function dependencyHandlers() {
   if (process.env.BUILDING_DLL) return []; // Don't do anything during the DLL Build step
   const dllPath = path.resolve(process.cwd(), dllPlugin.path || 'node_modules/react-dlls');
   const manifestPath = path.resolve(dllPath, 'reactDeps.json');
-  const commonsChunkPlugin = [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      children: true,
-      minChunks: 2,
-      async: true,
-    }),
-  ];
+  // const commonsChunkPlugin = [
+  //   new webpack.optimize.CommonsChunkPlugin({
+  //     name: 'vendor',
+  //     children: true,
+  //     minChunks: 2,
+  //     async: true,
+  //   }),
+  // ];
   const dllReferencePlugin = [
     new webpack.DllReferencePlugin({
       context: process.cwd(),
@@ -48,7 +48,7 @@ function dependencyHandlers() {
     }),
   ];
 
-  if (!dllPlugin) return commonsChunkPlugin; // If the package.json does not have a dllPlugin property, use the CommonsChunkPlugin
+  // if (!dllPlugin) return commonsChunkPlugin; // If the package.json does not have a dllPlugin property, use the CommonsChunkPlugin
   if (!dllPlugin.dlls) { /* exclude any server side dependencies by listing them in dllConfig.exclude */
     if (!fs.existsSync(manifestPath)) {
       console.error('The DLL manifest is missing. Please run `npm run build:dll`');

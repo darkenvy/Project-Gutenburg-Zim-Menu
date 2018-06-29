@@ -145,8 +145,9 @@
     "lodash": "^4.17.4",
     "path": "^0.12.7",
     "shelljs": "^0.8.1",
-    "webpack": "^3.10.0",
+    "webpack": "^3.12.0",
     "webpack-bundle-analyzer": "^2.9.2",
+    "webpack-cli": "^3.0.8",
     "webpack-dev-middleware": "^2.0.4",
     "webpack-hot-middleware": "^2.22.2"
   }
