@@ -28,3 +28,7 @@ Note: If you get errors, try installing without the -g flag. Eslint may not see 
 
 ## Todo
 * Alias react to preact but work with eslint
+
+## Dev Notes
+##### Optional Chaining
+VSCode's TS/JS Validator freaks out when you optionally chain. (ex: window?.location?.href). So the TS/JS validator has been disabled for the time being. This is not ideal. However, Microsoft refuses to work further on this support until the ES committee finalizes TC39. If you need TS/JS validation, re-enable in local .vscode settings and don't use optional chaining. Easy as that :). PS: the setting is `"javascript.validate.enable": false`
