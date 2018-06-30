@@ -2,8 +2,8 @@ import React from 'preact';
 
 class App extends React.Component {
   constructor(props) {
-    super(props); 
-    this.location = window?.location?.href;
+    super(props);
+    this.location = window?.location?.href; // eslint-disable-line
   }
 
   render() {
