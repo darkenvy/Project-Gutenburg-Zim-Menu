@@ -23,11 +23,17 @@ module.exports = require('./base')({
   context: process.cwd(),
   entry: getDependencies(pkg),
   devtool: 'eval',
+  mode: 'development',
   output: {
     filename: '[name].dll.js',
     path: outputPath,
     library: '[name]',
   },
+  splitChunks: { // CommonsChunkPlugin()
+    name: 'vendor',
+    minChunks: 2,
+  },
+  concatenateModules: true, // ModuleConcatenationPlugin
   plugins: [
     new webpack.DllPlugin({
       name: '[name]',

@@ -9,6 +9,9 @@
 </head>
 
 <body>
+  <% if (htmlWebpackPlugin.options.includeDllOnTemplate) { %>
+      <script src="reactDeps.dll.js"></script>
+  <% } %>
   <div id="root"></div>
 </body>
 

@@ -1,15 +1,16 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const CopyWebpackPlugin = require('copy-webpack-plugin');
-// process.noDeprecation = true; // see https://github.com/webpack/loader-utils/issues/56
 
+const includeDllOnTemplate = process.env.NODE_ENV === 'development';
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: './app/index.html',
+  includeDllOnTemplate, // We expost this ourselves to the ejs
+  template: './app/index.html.ejs',
   filename: 'index.html',
-  inject: 'body'
+  inject: 'body',
 });
 
+console.log('-------7777777777', process.env.NODE_ENV, process.env.NODE_ENV === 'development')
 module.exports = options => ({
   entry: options.entry,
   output: Object.assign({
@@ -61,8 +62,12 @@ module.exports = options => ({
         ],
       },
       {
+        test: /\.ejs$/,
+        loader: 'ejs-loader',
+      },
+      {
         test: /\.html$/,
-        use: 'html-loader',
+        use: ['html-loader'],
       },
       {
         test: /\.json$/,
@@ -80,11 +85,10 @@ module.exports = options => ({
     ],
   },
   plugins: options.plugins.concat([
+    new webpack.DefinePlugin({'process.env': {NODE_ENV: JSON.stringify(process.env.NODE_ENV)}}), // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV` inside your code for any environment checks;
     HtmlWebpackPluginConfig,
     new webpack.ProvidePlugin({fetch: 'exports-loader?self.fetch!whatwg-fetch'}),
     new webpack.NamedModulesPlugin(),
-    new webpack.DefinePlugin({'process.env': {NODE_ENV: JSON.stringify(process.env.NODE_ENV)}}), // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV` inside your code for any environment checks;
-    // new CopyWebpackPlugin([{ from: 'app/static/*', to: '[name].[ext]' }]),
   ]),
   resolve: {
     modules: ['app', 'node_modules'],

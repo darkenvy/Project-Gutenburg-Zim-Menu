@@ -23,4 +23,4 @@ if (!fs.existsSync(dllManifestPath)) {
   fs.writeFileSync(dllManifestPath, manifestText, 'utf8');
 }
 
-shell.exec('cross-env BUILDING_DLL=true webpack --display-chunks --color --config internals/webpack/dll.js --hide-modules');
+shell.exec('cross-env BUILDING_DLL=true NODE_ENV=development webpack --display-chunks --color --config internals/webpack/dll.js --hide-modules');
