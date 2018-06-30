@@ -56,9 +56,13 @@ class Logger {
     if (window) {
       window.logLevel = window.logLevel
         || allCookies.loglevel
-        || location.hostname === 'localhost' ? this.LEVEL.DEBUG : this.LEVEL.NONE;
+        || window.location.hostname === 'localhost' ? this.LEVEL.DEBUG : this.LEVEL.NONE;
     }
-    this.logLevel = (window && window.logLevel && this.LEVEL[window.logLevel.toUpperCase()]) || this.LEVEL.NONE;
+    this.logLevel = (
+      window &&
+      window.logLevel &&
+      this.LEVEL[window.logLevel.toUpperCase()]
+    ) || this.LEVEL.NONE;
 
     this.consoleLog(this.LEVEL.INFO, [`
       Logging Level ${this.logLevel}
