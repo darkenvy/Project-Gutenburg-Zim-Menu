@@ -10,13 +10,15 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   inject: 'body',
 });
 
-console.log('-------7777777777', process.env.NODE_ENV, process.env.NODE_ENV === 'development')
 module.exports = options => ({
   entry: options.entry,
-  output: Object.assign({
-    path: path.resolve(process.cwd(), 'build'), // Compile into js/build.js
-    publicPath: '/',
-  }, options.output),
+  output: Object.assign(
+    {
+      path: path.resolve(process.cwd(), 'build'), // Compile into js/build.js
+      publicPath: '/',
+    },
+    options.output,
+  ),
   module: {
     rules: [
       {
@@ -85,9 +87,9 @@ module.exports = options => ({
     ],
   },
   plugins: options.plugins.concat([
-    new webpack.DefinePlugin({'process.env': {NODE_ENV: JSON.stringify(process.env.NODE_ENV)}}), // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV` inside your code for any environment checks;
+    new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify(process.env.NODE_ENV) } }), // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV` inside your code for any environment checks;
     HtmlWebpackPluginConfig,
-    new webpack.ProvidePlugin({fetch: 'exports-loader?self.fetch!whatwg-fetch'}),
+    new webpack.ProvidePlugin({ fetch: 'exports-loader?self.fetch!whatwg-fetch' }),
     new webpack.NamedModulesPlugin(),
   ]),
   resolve: {
@@ -95,10 +97,11 @@ module.exports = options => ({
     extensions: ['.js', '.jsx', '.react.js'],
     mainFields: ['browser', 'jsnext:main', 'main'],
     alias: {
-      'react': 'preact-compat',
+      react: 'preact-compat',
       'react-dom': 'preact-compat',
-      // 'create-react-class': 'preact-compat/lib/create-react-class' // Not necessary unless you consume a module using `createClass`
-    }
+      /* Not necessary unless you consume a module using `createClass` */
+      // 'create-react-class': 'preact-compat/lib/create-react-class'
+    },
   },
   node: {
     console: true,

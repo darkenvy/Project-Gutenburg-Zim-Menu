@@ -1,7 +1,8 @@
 const path = require('path');
 const _ = require('lodash');
 const webpack = require('webpack');
-const pkg = require(path.join(process.cwd(), 'package.json'));
+
+const pkg = require(path.join(process.cwd(), 'package.json')); // eslint-disable-line import/no-dynamic-require
 
 const dllConfig = pkg.dllPlugin;
 const outputPath = path.join(process.cwd(), dllConfig.path);
@@ -10,8 +11,8 @@ if (!pkg.dllPlugin) { process.exit(0); }
 
 function getDependencies() {
   const dependencyNames = Object.keys(pkg.dependencies);
-  const exclude = pkg.dllPlugin.exclude;
-  const include = pkg.dllPlugin.include;
+  const { exclude } = pkg.dllPlugin;
+  const { include } = pkg.dllPlugin;
   const includeDependencies = _.uniq(dependencyNames.concat(include));
 
   return {
