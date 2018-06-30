@@ -35,7 +35,10 @@
     },
     "rules": {
       "import/no-extraneous-dependencies": 0,
-      "comma-dangle": [2, "always-multiline"]
+      "comma-dangle": [
+        2,
+        "always-multiline"
+      ]
     },
     "settings": {
       "import/resolver": {
@@ -46,6 +49,7 @@
     }
   },
   "babel": {
+    "plugins": ["@babel/plugin-proposal-optional-chaining"],
     "presets": [
       "@babel/typescript",
       "@babel/react",
@@ -78,6 +82,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.51",
+    "@babel/plugin-proposal-optional-chaining": "^7.0.0-beta.51",
     "@babel/preset-env": "^7.0.0-beta.51",
     "@babel/preset-react": "^7.0.0-beta.51",
     "@babel/preset-typescript": "^7.0.0-beta.51",

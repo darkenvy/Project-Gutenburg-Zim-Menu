@@ -5,6 +5,7 @@ class App extends React.Component {
     super(props);
   }
   render() {
+    console.log(window?.location?.href)
     return <div>Hello World!</div>;
   }
 }
