@@ -44,6 +44,7 @@ module.exports = require('./base')({
     ];
     return plugins;
   })(),
+  mode: 'production',
 
   performance: {
     assetFilter: assetFilename => !/(\.map$)|(^(main\.|favicon\.))/.test(assetFilename),

@@ -51,7 +51,8 @@
   },
   "babel": {
     "plugins": [
-      "@babel/plugin-proposal-optional-chaining"
+      "@babel/plugin-proposal-optional-chaining",
+      "@babel/plugin-proposal-class-properties"
     ],
     "presets": [
       "@babel/typescript",
@@ -82,10 +83,14 @@
   "dependencies": {
     "preact": "^8.2.7",
     "preact-compat": "^3.18.0",
-    "react-cookies": "^0.1.0"
+    "react-cookies": "^0.1.0",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
+    "reselect": "^3.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.51",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.51",
     "@babel/plugin-proposal-optional-chaining": "^7.0.0-beta.51",
     "@babel/preset-env": "^7.0.0-beta.51",
     "@babel/preset-react": "^7.0.0-beta.51",
@@ -99,10 +104,13 @@
     "express": "^4.16.2",
     "fs": "0.0.1-security",
     "glob": "^7.1.2",
+    "history": "^4.7.2",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "lodash": "^4.17.4",
     "path": "^0.12.7",
+    "react-router-redux": "^4.0.8",
+    "redux-saga": "^0.16.0",
     "shelljs": "^0.8.1",
     "webpack": "^4.14.0",
     "webpack-bundle-analyzer": "^2.9.2",
