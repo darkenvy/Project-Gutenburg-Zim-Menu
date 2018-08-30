@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const includeDllOnTemplate = process.env.NODE_ENV === 'development';
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
@@ -91,6 +92,7 @@ module.exports = options => ({
     HtmlWebpackPluginConfig,
     new webpack.ProvidePlugin({ fetch: 'exports-loader?self.fetch!whatwg-fetch' }),
     new webpack.NamedModulesPlugin(),
+    new CopyWebpackPlugin([{ from: 'app/static/', to: '[name].[ext]' }]),
   ]),
   resolve: {
     modules: ['app', 'node_modules'],
